@@ -1,23 +1,16 @@
 (ns hyauth.handler
- ;; (:use ring.middleware.json-params)
- ;; (:use ring.adapter.jetty)
-  (:use ring.middleware.json-params)
-  (:use ring.middleware.params)
   (:require [hyauth.pdp :as pdp])
   (:require [hyauth.prp :as prp])
   (:require [compojure.core :refer :all]
-            [ring.middleware.resource :refer [wrap-resource]]
-            [ring.middleware.file-info :refer [wrap-file-info]]
+            [com.appsflyer.donkey.core :refer [create-donkey create-server]]
+            [com.appsflyer.donkey.server :refer [start]]
+            [com.appsflyer.donkey.result :refer [on-success]]
             [hiccup.middleware :refer [wrap-base-url]]
-            [compojure.handler :as handler]
             [compojure.route :as route]
             [clj-json.core :as json-core]
             [clojure.data.json :as json]
-            [hyauth.routes.home :refer [home-routes]]
-            [ring.middleware.multipart-params :refer [wrap-multipart-params]]))
+            ))
 
-(defn init []
-  (println "hyauth is starting"))
 
 (defn destroy []
   (println "hyauth is shutting down"))
@@ -85,10 +78,14 @@
              )
            (route/not-found "Not Found"))
 
-(def app
-  (-> (routes home-routes app-routes)
-      (handler/site)
-      wrap-params
-      wrap-json-params
-      wrap-multipart-params
-      (wrap-base-url)))
+
+(defn init []
+  (println "hyauth is starting")
+  (->
+   (create-donkey)
+   (create-server {:port   8080
+                   :routes  [{:handler app-routes
+                              :handler-mode :blocking}]})
+   start
+   (on-success (fn [_] (println "Server started listening on port 8080")))))
+

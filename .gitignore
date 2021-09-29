@@ -205,3 +205,4 @@ src/hyauth/attfun.clj
 .clj-kondo/.cache/2021.08.07-SNAPSHOT/clj/rightsmngmt.rule.transit.json
 .clj-kondo/.cache/2021.08.07-SNAPSHOT/clj/rightsmngmt.unify.transit.json
 .clj-kondo/.cache/2021.08.07-SNAPSHOT/clj/rightsmngmt.utils.transit.json
+.calva/output-window/output.calva-repl

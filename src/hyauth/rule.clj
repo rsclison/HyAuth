@@ -2,6 +2,7 @@
   (:require [clojure.reflect :as cr]
             [hyauth.prp :as prp]
             [clojure.string :as str]
+            [clojure.test :refer :all]
             )
   (:use hyauth.attfun clojure.test hyauth.prp)
   (:use [hashp.core])

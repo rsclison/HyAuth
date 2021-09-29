@@ -12,7 +12,6 @@
             [clojure.string :as str]
             [hyauth.unify :as unf]
             [java-time :as ti]
-            [flow-storm.api :as fs-api]
             [taoensso.timbre :as timbre
              :refer [log  trace  debug  info  warn  error  fatal report
                      logf tracef debugf infof warnf errorf fatalf reportf
@@ -23,9 +22,7 @@
 
 ;;(fs-api/connect)
 
-#trace
-(defn foo [a b]
-  (+ a b))
+
 
 (def properties (atom {}))
 
