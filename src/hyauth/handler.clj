@@ -5,7 +5,6 @@
             [com.appsflyer.donkey.core :refer [create-donkey create-server]]
             [com.appsflyer.donkey.server :refer [start]]
             [com.appsflyer.donkey.result :refer [on-success]]
-            [hiccup.middleware :refer [wrap-base-url]]
             [compojure.route :as route]
             [clj-json.core :as json-core]
             [clojure.data.json :as json]
