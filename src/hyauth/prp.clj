@@ -10,6 +10,17 @@
 
   )
 
+(def h2db
+  {:classname   "org.h2.Driver"
+   ;; :subprotocol "h2:mem"
+   :subprotocol "h2"
+  ;; :subname     "demo;DB_CLOSE_DELAY=-1"
+   :subname "./resources/h2db"
+   :user        "sa"
+   :password    ""
+  ;; :make-pool? true
+   })
+
 
 ;;(defrecord Rule [^String name ^String resourceClass ^String operation ^String condition ^String effect ^String startDate ^String endDate])
 (defrecord Rule2 [^String name ^String resourceClass ^Number priority ^String operation resourceCond subjectCond ^String effect ^String startDate ^String endDate])  ;; une resourceCond ou une subjectCond sont de la forme [type ?var clause1 clause2 ...]
@@ -32,13 +43,6 @@
 
 (def ^{:private true} policiesMap (atom {}))
 
-(def h2db {
-           :classname   "org.h2.Driver"
-           :subprotocol "h2:mem"
-           :subname     "demo;DB_CLOSE_DELAY=-1"
-           :user        "sa"
-           :password    ""
-           })
 
 (defn initdb []
   (jd/execute! h2db ["create table rules (name varchar(80), content json)"])
