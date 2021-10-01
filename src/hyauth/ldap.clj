@@ -21,3 +21,6 @@
   )
 
 
+(defn findUser [id]
+  (ldap/get ldap-server (str "uid=" id ",ou=users,ou=system"))
+  )

@@ -15,6 +15,7 @@
                  [com.taoensso/timbre "5.1.2"]
                  [hiccup "1.0.5"]
                  [clj-json "0.5.3"]
+                 [com.h2database/h2 "1.4.200"]
                  ]
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
