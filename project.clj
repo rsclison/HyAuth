@@ -16,6 +16,7 @@
                  [hiccup "1.0.5"]
                  [clj-json "0.5.3"]
                  [com.h2database/h2 "1.4.200"]
+                 [com.brunobonacci/mulog "0.9.0"]
                  ]
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
