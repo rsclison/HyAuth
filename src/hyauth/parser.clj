@@ -1,6 +1,5 @@
-(ns hyauth.json-path.parser)
-
-(ns json-path.parser)
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
+(ns hyauth.parser)
 
 (declare parse parse-expr)
 

@@ -1,7 +1,7 @@
-(ns hyauth.json-path.walker)
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
+(ns hyauth.walker
 
-(ns json-path.walker
-  [:require [json-path.match :as m]])
+  [:require [hyauth.match :as m]])
 
 (declare walk eval-expr)
 

@@ -1,7 +1,8 @@
-(ns hyauth.json-path.json-path
-  [:require [json-path.parser :as parser]
-   [json-path.match :as m]
-   [json-path.walker :as walker]])
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
+(ns hyauth.jsonpath
+  [:require [hyauth.parser :as parser]
+   [hyauth.match :as m]
+   [hyauth.walker :as walker]])
 
 (defn query [path object]
   (walker/walk (parser/parse-path path) {:root (m/root object)}))

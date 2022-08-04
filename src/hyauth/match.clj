@@ -1,4 +1,5 @@
-(ns hyauth.json-path.match)
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
+(ns hyauth.match)
 
 (defrecord Match [path value])
 
