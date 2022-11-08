@@ -32,6 +32,8 @@
 (def delegationSingleton (atom {:type :file :path "resources/delegations.edn"}))
 (def personSingleton (atom {:type :file :path "resources/persons.edn"}))
 
+(def pips (atom (utl/load-edn "resources/pips.edn")))
+
 ;;(defn rule [{:keys [name resourceClass operation condition effect]}]
 ;;  (->Rule name resourceClass operation condition effect (ti/local-date "yyyy-MM-dd" "1961-01-01")(ti/local-date  "yyyy-MM-dd" "3000-12-31"))
 ;;  )
@@ -67,6 +69,7 @@
 
 (defmulti initPersons (fn [] (:type @personSingleton)))
 (defmethod initPersons :file [] (utl/load-edn (:path @personSingleton)))
+
 
 (defmulti saveCompDelegations (fn [compdel](:type @delegationSingleton)))
 (defmethod saveCompDelegations :file [rescomp]
@@ -124,8 +127,14 @@
   )
 
 
-(defn findPip [attribute]
-  (apply (keyword attribute) [@attributeMap])
+;;(defn findPip [attribute]
+  ;;(apply (keyword attribute) [@attributeMap])
+  ;;)
+
+(defn findPip [class attribute]
+  (some #(if (and (= class (:class %))
+                  (or (nil? (:attributes %))(some (fn [v] (= v attribute)) (:attributes %))))
+          %) @pips)
   )
 
 (defn insert-policy [resourceClass pol]

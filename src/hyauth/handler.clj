@@ -8,6 +8,7 @@
             [compojure.route :as route]
             [clj-json.core :as json-core]
             [clojure.data.json :as json]
+            [com.brunobonacci.mulog :as u]
             ))
 
 
@@ -79,7 +80,7 @@
 
 
 (defn init []
-  (println "hyauth is starting")
+  (u/log "hyauth is starting")
   (->
    (create-donkey)
    (create-server {:port   8080
