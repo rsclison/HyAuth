@@ -1,8 +1,11 @@
 (ns hyauth.jsonrule
   (:require [clojure.string :as str]
-  [hyauth.jsonpath :as js]
+            [hyauth.jsonpath :as js]
             [hyauth.pip :as pip]
-            [hyauth.prp :as prp])
+            [hyauth.prp :as prp]
+            [hashp.core]
+            )
+  (:use clojure.test)
   )
 
 ;; a context is like {:class :student :name "john" :age 21}
@@ -13,6 +16,7 @@
   (if (map? ctxt)
     (get (pip/callPip (prp/findPip (:class ctxt) att) ctxt att) (keyword att))
     (throw (Exception. "Not an object"))))
+
 
 
 (defn walkResolveJPath [path context]
@@ -47,15 +51,19 @@
   (let [opv1 (evalOperand op1 subjOrRess ctxt)
         opv2 (evalOperand op2 subjOrRess ctxt)
         func (resolve(symbol "hyauth.attfun" operator))
-        funcres (apply func [op1 op2]) ]
-    
+        ]
+    (apply func [op1 op2])
     )
   )
+
+(deftest evalClause-testscalar
+        (is (= (evalClause [">" "1" "2"] {:class :toto :a 1 :b 2} :subject)
+               true)))
 
 ;; a request is like : {:subject {:id "Mary", :role "Professeur"} :resource {:class "Note"} :operation "lire" :context {:date "2019-08-14T04:03:27.456"}}
 ;; catch Exception while evaluating
 (defn evaluateRule [rule request]
-  (let [subject (:subject rule) (resource (:resource rule))]
+  (let [subject (:subject rule) resource (:resource rule)]
     
     )
 )
