@@ -1,0 +1,56 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Starting Jack-in Terminal: cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉>  ; Use `alt+enter` to evaluate
+; Jack-in done.
+clj꞉user꞉> 
+; Syntax error compiling at (c:\Users\rsclison\Documents\DEVT\hyauth\src\hyauth\jsonrule.clj:23:23).
+; No such namespace: str
+clj꞉hyauth.jsonrule꞉> 
+nil
+clj꞉hyauth.jsonrule꞉> 
+nil
+clj꞉hyauth.jsonrule꞉> 
+#'hyauth.jsonrule/resolveAttr
+clj꞉hyauth.jsonrule꞉> 
+; Evaluating file: pdp.clj
+; WARNING: = already refers to: #'clojure.core/= in namespace: hyauth.attfun, being replaced by: #'hyauth.attfun/=
+; WARNING: > already refers to: #'clojure.core/> in namespace: hyauth.attfun, being replaced by: #'hyauth.attfun/>
+; WARNING: >= already refers to: #'clojure.core/>= in namespace: hyauth.attfun, being replaced by: #'hyauth.attfun/>=
+; WARNING: < already refers to: #'clojure.core/< in namespace: hyauth.attfun, being replaced by: #'hyauth.attfun/<
+; WARNING: <= already refers to: #'clojure.core/<= in namespace: hyauth.attfun, being replaced by: #'hyauth.attfun/<=
+; WARNING: = already refers to: #'clojure.core/= in namespace: hyauth.rule, being replaced by: #'hyauth.attfun/=
+; WARNING: < already refers to: #'clojure.core/< in namespace: hyauth.rule, being replaced by: #'hyauth.attfun/<
+; WARNING: <= already refers to: #'clojure.core/<= in namespace: hyauth.rule, being replaced by: #'hyauth.attfun/<=
+; WARNING: > already refers to: #'clojure.core/> in namespace: hyauth.rule, being replaced by: #'hyauth.attfun/>
+; WARNING: >= already refers to: #'clojure.core/>= in namespace: hyauth.rule, being replaced by: #'hyauth.attfun/>=
+; Warning: *occurs-check* not declared dynamic and thus is not dynamically rebindable, but its name suggests otherwise. Please either indicate ^:dynamic *occurs-check* or change the name. (hyauth/unify.clj:3)
+#'hyauth.pdp/init
+clj꞉hyauth.pdp꞉> 
+(init)
+{:person 001, :delegate [(= id 002)], :resources [{:class Facture, :operations (lire)} {:class EJ, :id 1234, :operations (ecrire)}]}
+{:person 0001, :delegate [(= role chef_de_service)], :resources [{:class Agent, :operations (lire)}]}
+{:type :file,
+ :path "resources/delegations.edn",
+ :delegations
+ [{:person "001",
+   :delegate [(= id "002")],
+   :resources [{:class "Facture", :operations (lire)} {:class "EJ", :id "1234", :operations (ecrire)}]}
+  {:person "0001", :delegate [(= role "chef_de_service")], :resources [{:class "Agent", :operations (lire)}]}],
+ :compiled (() ())}
+clj꞉hyauth.pdp꞉> 
+1
