@@ -12,10 +12,10 @@
             [clojure.string :as str]
             [hyauth.unify :as unf]
             [java-time :as ti]
-            [taoensso.timbre :as timbre
-             :refer [log  trace  debug  info  warn  error  fatal report
-                     logf tracef debugf infof warnf errorf fatalf reportf
-                     spy get-env]]
+ ;;           [taoensso.timbre :as timbre
+ ;;            :refer [log  trace  debug  info  warn  error  fatal report
+ ;;                    logf tracef debugf infof warnf errorf fatalf reportf
+ ;;                    spy get-env]]
         ;;    [buddy.sign.jwt :as jwt]
             )
   (:import (java.util Map)))
@@ -104,7 +104,7 @@
 ;; return a map composed of the result (:result) and the set of applicable rules (:rules)
 
 (defn evalRequest [^Map request]
-  (info "EvalRequest")
+  ;;(info "EvalRequest")
   (if-not (:resource request)
     {:error "No resource specified"}
     (if-not (:subject request)
@@ -153,6 +153,7 @@
         ))
 
 (defn isAuthorized [request]
+  ;; {:resource {:class cc} :subject yy}
   (if-not (:resource request)
     {:error "No resource specified"}
     (if-not (:subject request)

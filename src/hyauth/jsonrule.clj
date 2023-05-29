@@ -63,8 +63,9 @@
 ;; a request is like : {:subject {:id "Mary", :role "Professeur"} :resource {:class "Note"} :operation "lire" :context {:date "2019-08-14T04:03:27.456"}}
 ;; catch Exception while evaluating
 (defn evaluateRule [rule request]
-  (let [subject (:subject rule) resource (:resource rule)]
-    
+  (let [subjectClauses (:subjectCond rule) resourceClauses (:resourceCond rule)]
+    (map #(evalClause % () :subject) subjectClauses)
+    (map #(evalClause % () :resource) resourceClauses)
     )
 )
 
