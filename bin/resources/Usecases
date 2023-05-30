@@ -20,16 +20,16 @@ On peut aussi passer des caractéristiques qui ne seront pas suffisantes pour r�
 Seul le chef de service du service qui a enregistré une facture peut modifier cette facture
 Question : quelles sont les factures que peut modifier Paul ? (on considère que Paul est le chef du service "scolarite")
 On appelle le service Rest avec :
-{"subject" : "{class Personne :name "Paul"}" "resource": {:class "Facture"} :operation "modifier" :context {:date "2019-08-14T04:03:27.456"} }
+{"subject" : "{class Person :name "Paul"}" "resource": {:class "Facture"} :operation "modifier" :context {:date "2019-08-14T04:03:27.456"} }
 
 Facture modifier
 [Facture ?f ((< montant 10000)(service ?serv))]
-[Personne ?subject ((= role chef_de_service)(service ?serv))]
+[Person ?subject ((= role chef_de_service)(service ?serv))]
 
 Si on complique la règle en ajoutant qu'il n'existe aucune facture fille
 Facture modifier
 [Facture ?f ((< montant 10000)(= service ?serv))]
-[Personne ?subject ((= role chef_de_service)(= service ?serv))]
+[Person ?subject ((= role chef_de_service)(= service ?serv))]
 NOT  [Facture ? (= mere ?f)]
 
 Les conditions sont un nu-uplets composé de :

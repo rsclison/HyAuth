@@ -1,4 +1,4 @@
-(ns hyauth.personne
+(ns hyauth.person
   (:require [hyauth.utils :as utl]
             [hyauth.prp :as prp]))
 

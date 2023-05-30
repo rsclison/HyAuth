@@ -1,6 +1,6 @@
 (ns hyauth.grhum
   (:require [clojure.java.jdbc :as jdbc]
-            [hyauth.personne :as pers]
+            [hyauth.person :as pers]
          )
   )
 
@@ -19,8 +19,8 @@
     )
   )
 
-(defrecord GrhumPersonneRepository [dbconn]
-  pers/PersonneRepository
+(defrecord GrhumPersonRepository [dbconn]
+  pers/PersonRepository
   (getById [id]
     (let [res (jdbc/query db [(str "SELECT * FROM INDIVIDU_ULR WHERE PERS_ID='" id "'")])])
     )

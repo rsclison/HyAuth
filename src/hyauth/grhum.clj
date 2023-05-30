@@ -1,6 +1,6 @@
 (ns hyauth.grhum
   (:require [clojure.java.jdbc :as jdbc]
-            [hyauth.personne :as pers]
+            [hyauth.person :as pers]
          )
   )
 

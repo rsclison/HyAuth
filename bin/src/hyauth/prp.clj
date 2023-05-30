@@ -96,7 +96,7 @@
 ;; les fillers permettent de pré-remplir des sujets ou des ressources
 
 
-(def subjectFillers (atom {"Personne" {:type "internalFiller" :method "fillPersonne"}
+(def subjectFillers (atom {"Person" {:type "internalFiller" :method "fillPerson"}
                            "Application" {}}))
 
 (def resourceFillers (atom {"Note" {:type "urlFiller" :url "http://localhost:8080/NoteFiller" }}))
@@ -181,7 +181,7 @@
                                                          :operation     "lire"
                                                          ;;   :condition     "(et(egal (att \"role\" ?subject) \"Professeur\")(egal(att \"astro.signe\" ?subject) \"poisson\"))"
                                                          :resource '[Facture ?f (< montant 1000)(= service ?serv)]
-                                                         :subject '[Personne ?subject (= role "chef_de_service")(= service ?serv)]
+                                                         :subject '[Person ?subject (= role "chef_de_service")(= service ?serv)]
                                                          :effect        "allow"
                                                          :startDate     "inf"
                                                          :endDate       "inf"})
@@ -190,7 +190,7 @@
                                                      :resourceClass "Facture"
                                                      :operation     "lire"
                                                      :resource '[Facture ?f ]
-                                                     :subject '[Personne ?subject (= role "chef_de_service")(= service ?serv)]
+                                                     :subject '[Person ?subject (= role "chef_de_service")(= service ?serv)]
                                                      :effect        "allow"
                                                      :startDate     "inf"
                                                      :endDate       "inf"})
