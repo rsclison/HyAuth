@@ -363,20 +363,20 @@
                                                   :resourceClass "Note"
                                                   :operation     "lire"
                                                   :resource '[Facture ?f (< montant 1000)(= service ?serv)]
-                                                  :subject '[Personne ?subject (= role "chef_de_service")(= service ?serv)]
+                                                  :subject '[Person ?subject (= role "chef_de_service")(= service ?serv)]
                                                   :effect        "allow"
                                                   :startDate     "inf"
                                                   :endDate       "inf"})
                                {:resource {:class "Facture" :montant 500 :service "compta"} :operation "lire" :context {:date "2019-08-14T04:03:27.456"} }
                                )
-         '[Personne ?subject (= role "chef_de_service") (= service "compta")]))
+         '[Person ?subject (= role "chef_de_service") (= service "compta")]))
   ;;       '((?serv "compta") (?f {:class "Facture", :montant 500, :service "compta"}))))
 
   (is (= (evalRuleWithResource (prp/rule2 {:name          "R1"
                                            :resourceClass "Note"
                                            :operation     "lire"
                                            :resource '[Facture ?f (< montant 1000)(= service ?serv)]
-                                           :subject '[Personne ?subject (= role chef_de_service)(= service ?serv)]
+                                           :subject '[Person ?subject (= role chef_de_service)(= service ?serv)]
                                            :effect        "allow"
                                            :startDate     "inf"
                                            :endDate       "inf"})
