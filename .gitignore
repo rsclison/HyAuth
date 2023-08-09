@@ -8,7 +8,6 @@ pom.xml.asc
 *.class
 /.lein-*
 /.nrepl-port
-src/hyauth/attfun.clj
 .clj-kondo/
 .lsp/
 .calva/output-window/output.calva-repl
