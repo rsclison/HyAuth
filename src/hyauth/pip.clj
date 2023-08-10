@@ -18,6 +18,11 @@
 (defmethod callPip :internal
   [pipdef ctxt att])
 
+
+
+(defmethod callPip :file
+  [pipdef ctxt att])
+
 ;; for testing reason
 
 
