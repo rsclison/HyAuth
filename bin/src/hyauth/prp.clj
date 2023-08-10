@@ -23,7 +23,7 @@
 
 
 ;;(defrecord Rule [^String name ^String resourceClass ^String operation ^String condition ^String effect ^String startDate ^String endDate])
-(defrecord Rule2 [^String name ^String resourceClass ^Number priority ^String operation resourceCond subjectCond ^String effect ^String startDate ^String endDate])  ;; une resourceCond ou une subjectCond sont de la forme [type ?var clause1 clause2 ...]
+(defrecord Rule2 [^String name ^String resourceClass ^Number priority ^String operation conditions ^String effect ^String startDate ^String endDate])  ;; une resourceCond ou une subjectCond sont de la forme [type ?var clause1 clause2 ...]
 
 (defrecord Policy [^String resourceClass ])
 

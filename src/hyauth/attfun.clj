@@ -152,6 +152,10 @@
   ))
 
 (defn < [arg1 arg2]
+  #p arg1
+  #p (type arg1)
+  #p arg2
+  #p (type arg2)
   (clojure.core/< (read-string arg1) (read-string arg2))
   )
 

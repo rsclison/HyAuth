@@ -23,7 +23,7 @@
 
 
 ;;(defrecord Rule [^String name ^String resourceClass ^String operation ^String condition ^String effect ^String startDate ^String endDate])
-(defrecord Rule2 [^String name ^String resourceClass ^Number priority ^String operation resourceCond subjectCond ^String effect ^String startDate ^String endDate])  ;; une resourceCond ou une subjectCond sont de la forme [type ?var clause1 clause2 ...]
+(defrecord Rule2 [^String name ^String resourceClass ^Number priority ^String operation conditions ^String effect ^String startDate ^String endDate])  ;; une resourceCond ou une subjectCond sont de la forme [type ?var clause1 clause2 ...]
 
 (defrecord Policy [^String resourceClass ])
 
@@ -38,8 +38,8 @@
 ;;  (->Rule name resourceClass operation condition effect (ti/local-date "yyyy-MM-dd" "1961-01-01")(ti/local-date  "yyyy-MM-dd" "3000-12-31"))
 ;;  )
 
-(defn rule2 [{:keys [name resourceClass priority operation resource subject effect]}]
-  (->Rule2 name resourceClass priority operation resource subject effect (ti/local-date "yyyy-MM-dd" "1961-01-01")(ti/local-date  "yyyy-MM-dd" "3000-12-31"))
+(defn rule2 [{:keys [name resourceClass priority operation conditions effect]}]
+  (->Rule2 name resourceClass priority operation conditions effect (ti/local-date "yyyy-MM-dd" "1961-01-01")(ti/local-date  "yyyy-MM-dd" "3000-12-31"))
   )
 
 
@@ -132,6 +132,8 @@
   ;;)
 
 (defn findPip [class attribute]
+  #p class
+  #p attribute
   (some #(if (and (= class (:class %))
                   (or (nil? (:attributes %))(some (fn [v] (= v attribute)) (:attributes %))))
           %) @pips)
@@ -161,7 +163,9 @@
   )
 
 (defn initf [rulesf]
+  #p rulesf
   (let [rules-map (utl/load-edn rulesf)]
+    #p rules-map
     (swap! policiesMap
            (fn [a] (reduce (fn [hm ke]                      ;; treat a resourceClass rules
                              (let [rls (get rules-map ke)]

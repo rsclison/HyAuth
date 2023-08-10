@@ -4,8 +4,7 @@
                                          :resourceClass "Facture"
                                          :domain        "GFC"
                                          :operation     "lire"
-                                         :resource      [Facture [< $r.montant $s.seuil]]
-                                         :subject       [Person [= $s.role "chef_de_service"] [= $s.service $r.service]]
+                                         :conditions       [[= [Person $s role] "chef_de_service"] [= [Person $s service] [Person $r service]] [< [Facture $r montant] [Person $s seuil]]]
                                          :effect        "allow"
                                          :startDate     "inf"
                                          :endDate       "inf"}
@@ -26,8 +25,7 @@
                                   :domain   "GRH"
                                   :roles ["gestionnaire RH"]
                                   :operations ["créer" ]
-                                  :resource [Mouvement]
-                                  :subject  [Person [= $.code $r.codegestion]]
+                                  :conditions  [[= [Person $s code] [Mouvement $r codegestion]]]
                                   }
                                  ]
                       :strategy :almost_one_allow_no_deny}
@@ -42,8 +40,7 @@
                               :priority 0
                               :domain   "SVE"
                               :operation "lire"
-                              :resource   [Diplome ]
-                              :subject    [Person [= $.role "professeur"]]
+                              :conditions    [[= [Person $s role] "professeur"]]
                               :effect     "allow"
                               :startDate  "inf"
                               :endDate    "inf"
@@ -58,8 +55,7 @@
                                   :priority 0
                                   :domain   "GFC"
                                   :operation "executer"
-                                  :resource   [Application [= $.name "gfc-compta"] ]
-                                  :subject    [Person [= $.role "comptable"]]
+                                  :conditions    [[= [Person $s role] "comptable"] [= [Application $r name] "gfc-compta"]]
                                   :effect     "allow"
                                   :startDate  "inf"
                                   :endDate    "inf"
