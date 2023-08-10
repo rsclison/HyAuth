@@ -11,6 +11,16 @@
 
 Exemples 2.0
 
-(evalRequest '{:subject {:id "John" :role "chef_de_service" :service "compta" :seuil 5000} :resource {:class "Facture" :montant 1000 :service "compta"} :operation "lire" :context {} })
+(evalRequest 
+ '{:subject {:id "John" :role "chef_de_service" :service "compta" :seuil 5000} :resource {:class "Facture" :montant 1000 :service "compta"} :operation "lire" :context {} })
 
-(whichAuthorized
+
+
+SYNTAXE 2.0 des règles
+
+condition ::= [clause]+
+clause ::= [operator operand operand]
+operand ::= value | [type object attribute]
+object ::= variable | [type object attribute]
+
+operande ==> [Person [Agent $s pere] age]
